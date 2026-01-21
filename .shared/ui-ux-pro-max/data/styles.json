@@ -1,0 +1,76 @@
+{
+  "styles": [
+    {
+      "name": "Glassmorphism",
+      "description": "Frosted glass effect with transparency and blur",
+      "keywords": ["modern", "minimalist", "clean", "transparent"],
+      "use_cases": ["SaaS", "Modern apps", "Dashboard"],
+      "best_practices": ["Use semi-transparent backgrounds", "Blur effect", "Border with opacity"]
+    },
+    {
+      "name": "Claymorphism",
+      "description": "Soft, rounded, clay-like appearance",
+      "keywords": ["soft", "friendly", "approachable", "playful"],
+      "use_cases": ["Creative apps", "Design tools", "Gaming"],
+      "best_practices": ["Soft shadows", "Rounded corners", "Warm colors"]
+    },
+    {
+      "name": "Neumorphism",
+      "description": "Embossed, soft UI with subtle shadows",
+      "keywords": ["minimal", "monochromatic", "soft", "embossed"],
+      "use_cases": ["Wellness", "Health apps", "Minimal design"],
+      "best_practices": ["Single color palette", "Soft shadows (inset and outer)", "Smooth transitions"]
+    },
+    {
+      "name": "Brutalism",
+      "description": "Raw, unpolished, technical aesthetic",
+      "keywords": ["bold", "raw", "technical", "industrial"],
+      "use_cases": ["Tech blogs", "Developer tools", "Creative agencies"],
+      "best_practices": ["Bold typography", "Minimal decoration", "Raw elements"]
+    },
+    {
+      "name": "Minimalism",
+      "description": "Simple, clean, focused on essentials",
+      "keywords": ["simple", "clean", "focused", "elegant"],
+      "use_cases": ["Corporate", "SaaS", "Professional services"],
+      "best_practices": ["Plenty of whitespace", "Limited color palette", "Simple typography"]
+    },
+    {
+      "name": "Skeuomorphism",
+      "description": "Design mimics real-world objects",
+      "keywords": ["realistic", "familiar", "intuitive", "textured"],
+      "use_cases": ["Mobile apps", "Consumer apps", "E-commerce"],
+      "best_practices": ["Realistic textures", "Depth and shadows", "Familiar metaphors"]
+    },
+    {
+      "name": "Dark Mode",
+      "description": "Dark background with light text",
+      "keywords": ["dark", "night mode", "low-light", "eye-friendly"],
+      "use_cases": ["Developer tools", "Media apps", "Gaming"],
+      "best_practices": ["OLED-friendly colors", "Reduced brightness", "Blue light reduction"]
+    },
+    {
+      "name": "Soft UI Evolution",
+      "description": "Soft shadows, subtle depth, calming premium feel",
+      "keywords": ["soft", "calming", "premium", "organic"],
+      "use_cases": ["Wellness", "Beauty", "Lifestyle", "Luxury services"],
+      "best_practices": ["Soft shadows", "Subtle gradients", "Organic shapes", "Calming colors"]
+    },
+    {
+      "name": "Bento Grid",
+      "description": "Grid layout with varied cell sizes",
+      "keywords": ["modern", "organized", "playful", "structured"],
+      "use_cases": ["Portfolio", "Dashboard", "Product showcase"],
+      "best_practices": ["CSS Grid", "Varied sizes", "Visual hierarchy"]
+    },
+    {
+      "name": "AI-Native UI",
+      "description": "Modern UI optimized for AI interactions",
+      "keywords": ["futuristic", "interactive", "smart", "conversational"],
+      "use_cases": ["AI tools", "Chatbots", "Automation platforms"],
+      "best_practices": ["Chat-like interfaces", "Progressive disclosure", "AI purple/pink (use sparingly)"]
+    }
+  ],
+  "total": 57,
+  "note": "This is a sample. Full version includes 57 unique styles."
+}

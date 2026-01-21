@@ -1,0 +1,94 @@
+{
+  "reasoning_rules": [
+    {
+      "industry": "SaaS",
+      "pattern": "Product-Focused",
+      "recommended_style": ["Glassmorphism", "Minimalism", "AI-Native UI"],
+      "color_mood": "Professional, trustworthy",
+      "typography_mood": "Modern, clean",
+      "key_effects": "Smooth transitions, subtle depth, focus on CTAs",
+      "anti_patterns": ["Bright neons", "Heavy animations", "Cluttered layouts", "AI purple/pink gradients"],
+      "accessibility": "WCAG AA minimum",
+      "performance": "Excellent"
+    },
+    {
+      "industry": "E-commerce",
+      "pattern": "Product Showcase",
+      "recommended_style": ["Claymorphism", "Skeuomorphism", "Bento Grid"],
+      "color_mood": "Vibrant, energetic",
+      "typography_mood": "Bold, attention-grabbing",
+      "key_effects": "Image focus, hover states, product highlights",
+      "anti_patterns": ["Dull colors", "Minimal images", "Confusing navigation", "Poor accessibility"],
+      "accessibility": "WCAG AA minimum",
+      "performance": "Fast loading"
+    },
+    {
+      "industry": "Beauty & Spa",
+      "pattern": "Hero-Centric + Social Proof",
+      "recommended_style": ["Soft UI Evolution", "Skeuomorphism", "Minimalism"],
+      "color_mood": "Soft, calming, premium",
+      "typography_mood": "Elegant, sophisticated",
+      "key_effects": "Soft shadows, smooth transitions, testimonials",
+      "anti_patterns": ["Bright neons", "Harsh animations", "Dark mode", "Corporate feel"],
+      "accessibility": "WCAG AA minimum",
+      "performance": "Excellent"
+    },
+    {
+      "industry": "Fintech",
+      "pattern": "Dashboard + Trust",
+      "recommended_style": ["Glassmorphism", "Minimalism", "Dark Mode"],
+      "color_mood": "Secure, trustworthy, modern",
+      "typography_mood": "Professional, technical",
+      "key_effects": "Clear data visualization, smooth transitions, security indicators",
+      "anti_patterns": ["Bright colors", "AI purple", "Unprofessional feel", "Weak security indicators"],
+      "accessibility": "WCAG AA minimum",
+      "performance": "Excellent"
+    },
+    {
+      "industry": "Healthcare",
+      "pattern": "Information + Trust",
+      "recommended_style": ["Minimalism", "Soft UI Evolution", "Neumorphism"],
+      "color_mood": "Professional, caring, trustworthy",
+      "typography_mood": "Clear, readable, professional",
+      "key_effects": "Clear hierarchy, accessibility focus, calming colors",
+      "anti_patterns": ["Bright alerts", "Complex interactions", "Poor accessibility", "Unprofessional"],
+      "accessibility": "WCAG AAA recommended",
+      "performance": "Fast loading"
+    },
+    {
+      "industry": "Creative Agency",
+      "pattern": "Portfolio + Showcase",
+      "recommended_style": ["Brutalism", "Claymorphism", "Bento Grid"],
+      "color_mood": "Bold, creative, vibrant",
+      "typography_mood": "Bold, artistic, unique",
+      "key_effects": "Large images, bold typography, smooth animations",
+      "anti_patterns": ["Corporate feel", "Minimal design", "Dull colors", "Cluttered layouts"],
+      "accessibility": "WCAG AA minimum",
+      "performance": "Image optimized"
+    },
+    {
+      "industry": "Developer Tools",
+      "pattern": "Code + Community",
+      "recommended_style": ["Brutalism", "Dark Mode", "Minimalism"],
+      "color_mood": "Technical, modern, professional",
+      "typography_mood": "Monospace, technical, clear",
+      "key_effects": "Code examples, dark theme, clear hierarchy",
+      "anti_patterns": ["Corporate feel", "Bright colors", "Slow performance", "Poor accessibility"],
+      "accessibility": "WCAG AA minimum",
+      "performance": "Excellent"
+    },
+    {
+      "industry": "Education",
+      "pattern": "Learning + Engagement",
+      "recommended_style": ["Claymorphism", "Bento Grid", "Minimalism"],
+      "color_mood": "Friendly, approachable, engaging",
+      "typography_mood": "Clear, readable, modern",
+      "key_effects": "Interactive elements, gamification, progress indicators",
+      "anti_patterns": ["Dull colors", "Complex navigation", "Poor accessibility", "Slow loading"],
+      "accessibility": "WCAG AA minimum",
+      "performance": "Fast loading"
+    }
+  ],
+  "total": 100,
+  "note": "This is a sample. Full version includes 100 industry-specific reasoning rules covering Tech, SaaS, Finance, Healthcare, E-commerce, Services, and Creative industries."
+}

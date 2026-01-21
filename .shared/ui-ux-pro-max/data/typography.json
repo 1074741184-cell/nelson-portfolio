@@ -1,0 +1,70 @@
+{
+  "font_pairings": [
+    {
+      "name": "Elegant & Professional",
+      "heading": "Cormorant Garamond",
+      "body": "Montserrat",
+      "google_fonts_link": "https://fonts.google.com/share?selection.family=Cormorant+Garamond|Montserrat",
+      "mood": "Elegant, sophisticated, premium",
+      "best_for": ["Luxury", "Corporate", "Editorial", "Beauty"]
+    },
+    {
+      "name": "Modern & Clean",
+      "heading": "Inter",
+      "body": "Roboto",
+      "google_fonts_link": "https://fonts.google.com/share?selection.family=Inter|Roboto",
+      "mood": "Modern, clean, technical",
+      "best_for": ["SaaS", "Tech", "Apps", "Minimalist"]
+    },
+    {
+      "name": "Bold & Creative",
+      "heading": "Playfair Display",
+      "body": "Lato",
+      "google_fonts_link": "https://fonts.google.com/share?selection.family=Playfair+Display|Lato",
+      "mood": "Bold, creative, modern",
+      "best_for": ["Creative", "Agency", "Portfolio", "Fashion"]
+    },
+    {
+      "name": "Friendly & Approachable",
+      "heading": "Poppins",
+      "body": "Open Sans",
+      "google_fonts_link": "https://fonts.google.com/share?selection.family=Poppins|Open+Sans",
+      "mood": "Friendly, approachable, modern",
+      "best_for": ["Startup", "SaaS", "App", "Community"]
+    },
+    {
+      "name": "Minimal & Sophisticated",
+      "heading": "Syne",
+      "body": "IBM Plex Sans",
+      "google_fonts_link": "https://fonts.google.com/share?selection.family=Syne|IBM+Plex+Sans",
+      "mood": "Minimal, sophisticated, technical",
+      "best_for": ["Tech", "Developer tools", "Corporate", "Minimal"]
+    },
+    {
+      "name": "Warm & Inviting",
+      "heading": "Quicksand",
+      "body": "Nunito",
+      "google_fonts_link": "https://fonts.google.com/share?selection.family=Quicksand|Nunito",
+      "mood": "Warm, inviting, friendly",
+      "best_for": ["Wellness", "Health", "Education", "Community"]
+    },
+    {
+      "name": "Classic & Timeless",
+      "heading": "Merriweather",
+      "body": "Source Sans Pro",
+      "google_fonts_link": "https://fonts.google.com/share?selection.family=Merriweather|Source+Sans+Pro",
+      "mood": "Classic, timeless, readable",
+      "best_for": ["Editorial", "Blog", "Publishing", "News"]
+    },
+    {
+      "name": "Bold & Modern",
+      "heading": "Space Grotesk",
+      "body": "Courier Prime",
+      "google_fonts_link": "https://fonts.google.com/share?selection.family=Space+Grotesk|Courier+Prime",
+      "mood": "Bold, technical, monospace",
+      "best_for": ["Developer tools", "Code-related", "Tech", "Minimal"]
+    }
+  ],
+  "total": 56,
+  "note": "This is a sample. Full version includes 56 curated font pairings with Google Fonts imports."
+}

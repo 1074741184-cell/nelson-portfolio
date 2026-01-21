@@ -338,6 +338,16 @@
             object-fit: cover;
         }
 
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item video::-webkit-media-controls {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
         .gallery-placeholder {
             width: 100%;
             height: 100%;
@@ -688,6 +698,114 @@
                 font-size: 0.8rem;
             }
         }
+
+        /* 图片放大查看器（Lightbox） */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+            overflow: auto;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: transform 0.2s ease;
+            padding: 0;
+            width: auto;
+            height: auto;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.2);
+        }
+
+        /* 手机端适配 */
+        @media (max-width: 768px) {
+            .lightbox-content {
+                max-width: 95vw;
+                max-height: 85vh;
+            }
+
+            .lightbox-close {
+                top: -35px;
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .lightbox-content {
+                max-width: 98vw;
+                max-height: 80vh;
+            }
+
+            .lightbox-close {
+                top: -30px;
+                right: -5px;
+                font-size: 1.8rem;
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                line-height: 1;
+            }
+        }
+
+        /* 为图片添加cursor提示 */
+        img[data-lightbox-trigger] {
+            cursor: zoom-in;
+        }
     </style>
 </head>
 <body>
@@ -794,32 +912,54 @@
                 <button class="modal-close" onclick="closeModal('aigc-modal')">×</button>
             </div>
             <div class="modal-body">
-                <h3 style="margin-bottom: 1rem; color: var(--primary);">项目概述</h3>
-                <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.8;">
+                <h3 style="margin-bottom: 1rem; color: var(--primary); font-size: 1.3rem; font-weight: 600;">项目概述</h3>
+                <p style="margin-bottom: 2rem; color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">
                     使用最前沿的AI技术进行创意视频生成，包括ComfyUI的复杂节点编排、OpenAI Sora的文本到视频转换、以及其他创意AI工具的应用。
                 </p>
                 
-                <h3 style="margin-bottom: 1rem; color: var(--primary);">技术栈</h3>
-                <ul class="module-features" style="margin-bottom: 1.5rem;">
-                    <li>ComfyUI - 节点式AI工作流</li>
-                    <li>OpenAI Sora - 视频生成模型</li>
-                    <li>Stable Diffusion - 图像生成</li>
-                    <li>FLUX - 高质量图像生成</li>
-                </ul>
+                <h3 style="margin-bottom: 1rem; color: var(--primary); font-size: 1.3rem; font-weight: 600;">技术栈</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; margin-bottom: 2rem;">
+                    <div style="padding: 1rem; background: linear-gradient(135deg, #0066CC15, #0066CC05); border-radius: 8px; border-left: 3px solid var(--primary);">
+                        <span style="color: var(--text-primary); font-weight: 500; font-size: 0.9rem;">🔗 ComfyUI</span>
+                        <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.3rem;">节点式AI工作流</p>
+                    </div>
+                    <div style="padding: 1rem; background: linear-gradient(135deg, #FF6B3515, #FF6B3505); border-radius: 8px; border-left: 3px solid var(--accent);">
+                        <span style="color: var(--text-primary); font-weight: 500; font-size: 0.9rem;">🎬 Sora</span>
+                        <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.3rem;">文本到视频转换</p>
+                    </div>
+                    <div style="padding: 1rem; background: linear-gradient(135deg, #0066CC15, #0066CC05); border-radius: 8px; border-left: 3px solid var(--primary);">
+                        <span style="color: var(--text-primary); font-weight: 500; font-size: 0.9rem;">🖼️ Diffusion</span>
+                        <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.3rem;">图像生成模型</p>
+                    </div>
+                    <div style="padding: 1rem; background: linear-gradient(135deg, #FF6B3515, #FF6B3505); border-radius: 8px; border-left: 3px solid var(--accent);">
+                        <span style="color: var(--text-primary); font-weight: 500; font-size: 0.9rem;">✨ FLUX</span>
+                        <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.3rem;">高质量图像生成</p>
+                    </div>
+                </div>
 
-                <h3 style="margin-bottom: 1rem; color: var(--primary);">作品展示</h3>
-                <div class="gallery" id="aigc-gallery">
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">📸</div>
+                <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-size: 1.3rem; font-weight: 600;">📺 视频作品</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 8px 24px rgba(0, 102, 204, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 12px 32px rgba(0, 102, 204, 0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 24px rgba(0, 102, 204, 0.15)'">
+                        <video style="width: 100%; height: 280px; object-fit: cover; display: block;" controls poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23000' width='100' height='100'/%3E%3C/svg%3E">
+                            <source src="assets/cook_fish.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放
+                        </video>
                     </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">📸</div>
+                    <div style="border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 8px 24px rgba(0, 102, 204, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 12px 32px rgba(0, 102, 204, 0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 24px rgba(0, 102, 204, 0.15)'">
+                        <video style="width: 100%; height: 280px; object-fit: cover; display: block;" controls poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23000' width='100' height='100'/%3E%3C/svg%3E">
+                            <source src="assets/video_demo.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放
+                        </video>
                     </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">📸</div>
+                </div>
+
+                <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-size: 1.3rem; font-weight: 600;">📸 工作流截图</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+                    <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(255, 107, 53, 0.1); transition: all 0.3s ease; cursor: zoom-in;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(255, 107, 53, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(255, 107, 53, 0.1)'">
+                        <img src="assets/comfyui1.png" alt="ComfyUI 工作流截图 1" onclick="openLightbox('assets/comfyui1.png')" style="width: 100%; height: 240px; object-fit: cover; display: block; cursor: zoom-in;">
                     </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">📸</div>
+                    <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(255, 107, 53, 0.1); transition: all 0.3s ease; cursor: zoom-in;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(255, 107, 53, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(255, 107, 53, 0.1)'">
+                        <img src="assets/comfyui2.png" alt="ComfyUI 工作流截图 2" onclick="openLightbox('assets/comfyui2.png')" style="width: 100%; height: 240px; object-fit: cover; display: block; cursor: zoom-in;">
                     </div>
                 </div>
             </div>
@@ -834,32 +974,34 @@
                 <button class="modal-close" onclick="closeModal('n8n-modal')">×</button>
             </div>
             <div class="modal-body">
-                <h3 style="margin-bottom: 1rem; color: var(--primary);">项目概述</h3>
-                <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.8;">
-                    设计和部署复杂的N8N工作流，实现跨平台数据集成、业务流程自动化、实时监控和智能决策。
+                <h3 style="margin-bottom: 1rem; color: var(--primary); font-size: 1.3rem; font-weight: 600;">项目概述</h3>
+                <p style="margin-bottom: 2rem; color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">
+                    通过N8N无代码平台打造智能自动化工作流，实现AI视频生成、内容分析、数据处理等复杂业务流程的自动化编排。
                 </p>
                 
-                <h3 style="margin-bottom: 1rem; color: var(--primary);">核心功能</h3>
-                <ul class="module-features" style="margin-bottom: 1.5rem;">
-                    <li>工作流设计与优化</li>
-                    <li>多API集成与协调</li>
-                    <li>数据转换与处理</li>
-                    <li>错误处理与重试机制</li>
-                </ul>
+                <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-size: 1.3rem; font-weight: 600;">核心工作流</h3>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="padding: 1.2rem; background: linear-gradient(135deg, #0066CC15, #0066CC05); border-radius: 8px; border-left: 3px solid var(--primary); transition: all 0.3s ease;" onmouseover="this.style.boxShadow='0 8px 24px rgba(0, 102, 204, 0.2)'" onmouseout="this.style.boxShadow='none'">
+                        <h4 style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; font-size: 1rem;">🎬 Sora 视频自动生成</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                            自动化调用 OpenAI Sora API，根据提示词生成高质量视频内容，支持批量处理和自定义参数调整。完整的任务队列管理和进度跟踪。
+                        </p>
+                    </div>
+                    <div style="padding: 1.2rem; background: linear-gradient(135deg, #FF6B3515, #FF6B3505); border-radius: 8px; border-left: 3px solid var(--accent); transition: all 0.3s ease;" onmouseover="this.style.boxShadow='0 8px 24px rgba(255, 107, 53, 0.2)'" onmouseout="this.style.boxShadow='none'">
+                        <h4 style="color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; font-size: 1rem;">🔍 Gemini 视频分析</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                            集成 Google Gemini 的多模态分析能力，自动提取视频内容特征、生成摘要、分类标签和关键帧截图。智能元数据自动化生成系统。
+                        </p>
+                    </div>
+                </div>
 
-                <h3 style="margin-bottom: 1rem; color: var(--primary);">工作流截图</h3>
-                <div class="gallery" id="n8n-gallery">
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">📋</div>
+                <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-size: 1.3rem; font-weight: 600;">🛠️ 工作流设计</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+                    <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 102, 204, 0.1); transition: all 0.3s ease; cursor: zoom-in;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(0, 102, 204, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(0, 102, 204, 0.1)'">
+                        <img src="assets/n8n_1.png" alt="N8N Sora 视频生成工作流" onclick="openLightbox('assets/n8n_1.png')" style="width: 100%; height: 240px; object-fit: cover; display: block; cursor: zoom-in;">
                     </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">📋</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">📋</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">📋</div>
+                    <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 102, 204, 0.1); transition: all 0.3s ease; cursor: zoom-in;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(0, 102, 204, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(0, 102, 204, 0.1)'">
+                        <img src="assets/n8n_2.png" alt="N8N Gemini 视频分析工作流" onclick="openLightbox('assets/n8n_2.png')" style="width: 100%; height: 240px; object-fit: cover; display: block; cursor: zoom-in;">
                     </div>
                 </div>
             </div>
@@ -874,34 +1016,81 @@
                 <button class="modal-close" onclick="closeModal('video-modal')">×</button>
             </div>
             <div class="modal-body">
-                <h3 style="margin-bottom: 1rem; color: var(--primary);">项目概述</h3>
-                <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.8;">
-                    专业的自动化视频编辑解决方案，支持批量处理视频、动态特效、智能转场、字幕生成、多轨混音等高级功能。UI采用UI UX Pro Max设计系统，提供现代化的用户体验。
+                <h3 style="margin-bottom: 1rem; color: var(--primary); font-size: 1.3rem; font-weight: 600;">项目概述</h3>
+                <p style="margin-bottom: 2rem; color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">
+                    专业的自动化视频编辑解决方案，支持批量处理视频、动态特效、智能转场、字幕生成、多轨混音等高级功能。采用 UI UX Pro Max 设计系统，提供现代化、极简的用户界面体验。
                 </p>
                 
-                <h3 style="margin-bottom: 1rem; color: var(--primary);">主要特性</h3>
-                <ul class="module-features" style="margin-bottom: 1.5rem;">
-                    <li>批量视频处理引擎</li>
-                    <li>智能随机转场效果</li>
-                    <li>自动字幕渲染系统</li>
-                    <li>三轨音频混音矩阵</li>
-                    <li>GPU加速支持</li>
-                    <li>双语界面（English/中文）</li>
-                </ul>
+                <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-size: 1.3rem; font-weight: 600;">核心功能</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem;">
+                    <div style="padding: 1rem; background: linear-gradient(135deg, #0066CC15, #0066CC05); border-radius: 8px; border-left: 3px solid var(--primary);">
+                        <span style="color: var(--text-primary); font-weight: 500; font-size: 0.9rem;">⚙️ 批量处理</span>
+                        <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.3rem;">支持多视频同时处理，高效率编辑</p>
+                    </div>
+                    <div style="padding: 1rem; background: linear-gradient(135deg, #FF6B3515, #FF6B3505); border-radius: 8px; border-left: 3px solid var(--accent);">
+                        <span style="color: var(--text-primary); font-weight: 500; font-size: 0.9rem;">✨ 动态转场</span>
+                        <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.3rem;">智能随机转场，专业级效果</p>
+                    </div>
+                    <div style="padding: 1rem; background: linear-gradient(135deg, #0066CC15, #0066CC05); border-radius: 8px; border-left: 3px solid var(--primary);">
+                        <span style="color: var(--text-primary); font-weight: 500; font-size: 0.9rem;">🎯 字幕系统</span>
+                        <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.3rem;">自动字幕渲染与样式定制</p>
+                    </div>
+                    <div style="padding: 1rem; background: linear-gradient(135deg, #FF6B3515, #FF6B3505); border-radius: 8px; border-left: 3px solid var(--accent);">
+                        <span style="color: var(--text-primary); font-weight: 500; font-size: 0.9rem;">🎵 音轨混音</span>
+                        <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.3rem;">三轨音频矩阵，专业混音引擎</p>
+                    </div>
+                </div>
 
-                <h3 style="margin-bottom: 1rem; color: var(--primary);">工具截图</h3>
-                <div class="gallery" id="video-gallery">
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">🎥</div>
+                <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-size: 1.3rem; font-weight: 600;">📺 工具界面演示</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-bottom: 2rem;">
+                    <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 102, 204, 0.1); transition: all 0.3s ease; cursor: zoom-in;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(0, 102, 204, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(0, 102, 204, 0.1)'">
+                        <img src="assets/video_tool_1.png" alt="工具界面 1" onclick="openLightbox('assets/video_tool_1.png')" style="width: 100%; height: 200px; object-fit: cover; display: block; cursor: zoom-in;">
                     </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">🎥</div>
+                    <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 102, 204, 0.1); transition: all 0.3s ease; cursor: zoom-in;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(0, 102, 204, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(0, 102, 204, 0.1)'">
+                        <img src="assets/video_tool_2.png" alt="工具界面 2" onclick="openLightbox('assets/video_tool_2.png')" style="width: 100%; height: 200px; object-fit: cover; display: block; cursor: zoom-in;">
                     </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">🎥</div>
+                    <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 102, 204, 0.1); transition: all 0.3s ease; cursor: zoom-in;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(0, 102, 204, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(0, 102, 204, 0.1)'">
+                        <img src="assets/video_tool_3.png" alt="工具界面 3" onclick="openLightbox('assets/video_tool_3.png')" style="width: 100%; height: 200px; object-fit: cover; display: block; cursor: zoom-in;">
                     </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">🎥</div>
+                    <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 102, 204, 0.1); transition: all 0.3s ease; cursor: zoom-in;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(0, 102, 204, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(0, 102, 204, 0.1)'">
+                        <img src="assets/video_tool_4.png" alt="工具界面 4" onclick="openLightbox('assets/video_tool_4.png')" style="width: 100%; height: 200px; object-fit: cover; display: block; cursor: zoom-in;">
+                    </div>
+                    <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 102, 204, 0.1); transition: all 0.3s ease; cursor: zoom-in;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(0, 102, 204, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(0, 102, 204, 0.1)'">
+                        <img src="assets/video_tool_5.png" alt="工具界面 5" onclick="openLightbox('assets/video_tool_5.png')" style="width: 100%; height: 200px; object-fit: cover; display: block; cursor: zoom-in;">
+                    </div>
+                </div>
+
+                <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-size: 1.3rem; font-weight: 600;">🎞️ 成品展示</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                    <div style="border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 8px 24px rgba(255, 107, 53, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 12px 32px rgba(255, 107, 53, 0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 24px rgba(255, 107, 53, 0.15)'">
+                        <video style="width: 100%; height: 280px; object-fit: cover; display: block;" controls>
+                            <source src="assets/video_output_1.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放
+                        </video>
+                    </div>
+                    <div style="border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 8px 24px rgba(255, 107, 53, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 12px 32px rgba(255, 107, 53, 0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 24px rgba(255, 107, 53, 0.15)'">
+                        <video style="width: 100%; height: 280px; object-fit: cover; display: block;" controls>
+                            <source src="assets/video_output_2.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放
+                        </video>
+                    </div>
+                    <div style="border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 8px 24px rgba(255, 107, 53, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 12px 32px rgba(255, 107, 53, 0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 24px rgba(255, 107, 53, 0.15)'">
+                        <video style="width: 100%; height: 280px; object-fit: cover; display: block;" controls>
+                            <source src="assets/video_output_3.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放
+                        </video>
+                    </div>
+                    <div style="border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 8px 24px rgba(255, 107, 53, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 12px 32px rgba(255, 107, 53, 0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 24px rgba(255, 107, 53, 0.15)'">
+                        <video style="width: 100%; height: 280px; object-fit: cover; display: block;" controls>
+                            <source src="assets/video_output_4.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放
+                        </video>
+                    </div>
+                    <div style="border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 8px 24px rgba(255, 107, 53, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 12px 32px rgba(255, 107, 53, 0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 24px rgba(255, 107, 53, 0.15)'">
+                        <video style="width: 100%; height: 280px; object-fit: cover; display: block;" controls>
+                            <source src="assets/video_output_5.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放
+                        </video>
                     </div>
                 </div>
             </div>
@@ -919,15 +1108,59 @@
         </div>
     </footer>
 
+    <!-- 图片放大查看器（Lightbox） -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox()">×</button>
+            <img class="lightbox-image" id="lightbox-img" src="" alt="放大查看">
+        </div>
+    </div>
+
     <script>
+        // 图片放大查看器（Lightbox）功能
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            // 如果点击的是lightbox背景本身（不是内容），则关闭
+            if (event && event.target.id !== 'lightbox') return;
+            
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ESC键关闭lightbox
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const lightbox = document.getElementById('lightbox');
+                if (lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            }
+        });
+
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
             document.body.style.overflow = 'auto';
+            
+            // 停止所有视频播放
+            const videos = modal.querySelectorAll('video');
+            videos.forEach(video => {
+                video.pause();
+                video.currentTime = 0;
+            });
         }
 
         // 点击模态外部关闭

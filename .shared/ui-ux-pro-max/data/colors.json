@@ -1,0 +1,86 @@
+{
+  "palettes": [
+    {
+      "name": "SaaS Professional",
+      "primary": "#0066CC",
+      "secondary": "#E8E8E8",
+      "accent": "#FF6B35",
+      "background": "#FFFFFF",
+      "text": "#1A1A1A",
+      "industries": ["SaaS", "B2B", "Enterprise"],
+      "mood": "Professional, trustworthy, modern"
+    },
+    {
+      "name": "Beauty & Wellness",
+      "primary": "#E8B4B8",
+      "secondary": "#A8D5BA",
+      "accent": "#D4AF37",
+      "background": "#FFF5F5",
+      "text": "#2D3436",
+      "industries": ["Beauty", "Spa", "Wellness", "Lifestyle"],
+      "mood": "Calming, premium, elegant"
+    },
+    {
+      "name": "E-commerce Modern",
+      "primary": "#FF6B9D",
+      "secondary": "#00D4FF",
+      "accent": "#FFA500",
+      "background": "#F8F9FA",
+      "text": "#2C3E50",
+      "industries": ["E-commerce", "Retail", "Fashion"],
+      "mood": "Vibrant, energetic, trendy"
+    },
+    {
+      "name": "Fintech Trust",
+      "primary": "#1E3A8A",
+      "secondary": "#0EA5E9",
+      "accent": "#22C55E",
+      "background": "#F0F9FF",
+      "text": "#1E293B",
+      "industries": ["Fintech", "Banking", "Crypto"],
+      "mood": "Secure, trustworthy, modern"
+    },
+    {
+      "name": "Healthcare Professional",
+      "primary": "#0891B2",
+      "secondary": "#E0E7FF",
+      "accent": "#DC2626",
+      "background": "#FFFFFF",
+      "text": "#1E1B4B",
+      "industries": ["Healthcare", "Medical", "Wellness"],
+      "mood": "Professional, caring, trustworthy"
+    },
+    {
+      "name": "Creative Agency",
+      "primary": "#7C3AED",
+      "secondary": "#EC4899",
+      "accent": "#F59E0B",
+      "background": "#1F2937",
+      "text": "#F3F4F6",
+      "industries": ["Creative", "Agency", "Design", "Portfolio"],
+      "mood": "Bold, creative, innovative"
+    },
+    {
+      "name": "Tech Dark",
+      "primary": "#60A5FA",
+      "secondary": "#34D399",
+      "accent": "#F472B6",
+      "background": "#0F172A",
+      "text": "#F1F5F9",
+      "industries": ["Tech", "Developer tools", "Gaming"],
+      "mood": "Modern, technical, powerful"
+    },
+    {
+      "name": "Minimalist Monochrome",
+      "primary": "#000000",
+      "secondary": "#808080",
+      "accent": "#FFFFFF",
+      "background": "#FFFFFF",
+      "text": "#000000",
+      "industries": ["Minimal", "Corporate", "Luxury"],
+      "mood": "Clean, elegant, sophisticated"
+    }
+  ],
+  "total": 95,
+  "note": "This is a sample. Full version includes 95 industry-specific palettes."
+}
