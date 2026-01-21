@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nelson - Creative Technologist | 3D Rendering | Automation | Vibe Coding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        
+        /* Glassmorphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        /* Smooth transitions */
+        button, a, .card {
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        button:hover, a:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Focus states for accessibility */
+        button:focus, a:focus {
+            outline: 2px solid #0066CC;
+            outline-offset: 2px;
+        }
+        
+        /* Reduce motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #0066CC 0%, #0051A8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #0066CC 0%, #0051A8 100%);
+            color: white;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            box-shadow: 0 8px 24px rgba(0, 102, 204, 0.3);
+        }
+        
+        .secondary-button {
+            background: transparent;
+            border: 2px solid #E8E8E8;
+            color: #1A1A1A;
+            font-weight: 600;
+            padding: 10px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .secondary-button:hover {
+            border-color: #0066CC;
+            color: #0066CC;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full glass z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="text-2xl font-bold gradient-text">Nelson</div>
+            <div class="hidden md:flex gap-8 text-gray-600">
+                <a href="#skills" class="hover:text-gray-900">Skills</a>
+                <a href="#projects" class="hover:text-gray-900">Projects</a>
+                <a href="#contact" class="hover:text-gray-900">Contact</a>
+            </div>
+            <button class="cta-button">Say Hi</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-20 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                        Creative Technologist 🥊
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-2">
+                        <span class="font-bold">3D Rendering</span> • <span class="font-bold">AI Automation</span> • <span class="font-bold">Vibe Coding</span>
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        I build beautiful, automated systems. Specializing in N8N workflows, ComfyUI rendering, 3D modeling, and creating code with good vibes.
+                    </p>
+                    <div class="flex gap-4">
+                        <button class="cta-button">View My Work</button>
+                        <button class="secondary-button">Get in Touch</button>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-6">✓ Boxer • Code Creator • 3D Enthusiast • Automation Wizard</p>
+                </div>
+                <div class="glass rounded-2xl p-8 h-96 flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="text-8xl mb-4">💻</div>
+                        <p class="text-gray-600 text-lg">Crafting Digital Experiences</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">My Expertise</h2>
+                <p class="text-xl text-gray-600">Specialized skills that create magic</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Skill 1 -->
+                <div class="glass p-8 rounded-xl">
+                    <div class="text-4xl mb-4">🥊</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Boxing</h3>
+                    <p class="text-gray-600">Discipline meets creativity. The art of precision and timing flows into everything I build.</p>
+                </div>
+                
+                <!-- Skill 2 -->
+                <div class="glass p-8 rounded-xl">
+                    <div class="text-4xl mb-4">💜</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Vibe Coding</h3>
+                    <p class="text-gray-600">Writing code with feeling. Clean, intuitive, and beautiful code that makes you smile.</p>
+                </div>
+                
+                <!-- Skill 3 -->
+                <div class="glass p-8 rounded-xl">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">3D Rendering & Modeling</h3>
+                    <p class="text-gray-600">Bringing imagination to life with professional 3D rendering and modeling techniques.</p>
+                </div>
+                
+                <!-- Skill 4 -->
+                <div class="glass p-8 rounded-xl">
+                    <div class="text-4xl mb-4">⚙️</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">N8N Automation</h3>
+                    <p class="text-gray-600">Building intelligent automation workflows that save time and eliminate repetitive tasks.</p>
+                </div>
+                
+                <!-- Skill 5 -->
+                <div class="glass p-8 rounded-xl">
+                    <div class="text-4xl mb-4">🎬</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">ComfyUI</h3>
+                    <p class="text-gray-600">Advanced node-based generative workflows for AI-powered visual creation.</p>
+                </div>
+                
+                <!-- Skill 6 -->
+                <div class="glass p-8 rounded-xl">
+                    <div class="text-4xl mb-4">🤖</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">AI Integration</h3>
+                    <p class="text-gray-600">Seamlessly integrating AI and machine learning into creative workflows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Notable Projects</h2>
+                <p class="text-xl text-gray-600">Creative work across different domains</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-xl p-8 border border-gray-200">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">N8N Workflow Suite</h3>
+                    <p class="text-gray-600 mb-4">Custom automation workflows for enterprise clients</p>
+                    <div class="mb-6">
+                        <span class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full">Automation</span>
+                        <span class="text-sm bg-purple-100 text-purple-700 px-3 py-1 rounded-full ml-2">Integration</span>
+                    </div>
+                    <button class="secondary-button w-full">Learn More</button>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-white rounded-xl p-8 border-2 border-blue-500 relative">
+                    <div class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-semibold">Featured</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">ComfyUI AI Canvas</h3>
+                    <p class="text-gray-600 mb-4">Advanced generative art workflows and custom nodes</p>
+                    <div class="mb-6">
+                        <span class="text-sm bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full">AI/ML</span>
+                        <span class="text-sm bg-pink-100 text-pink-700 px-3 py-1 rounded-full ml-2">Creative</span>
+                    </div>
+                    <button class="cta-button w-full">Check It Out</button>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-white rounded-xl p-8 border border-gray-200">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">3D Render Archive</h3>
+                    <p class="text-gray-600 mb-4">Professional 3D modeling and rendering portfolio</p>
+                    <div class="mb-6">
+                        <span class="text-sm bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">3D Design</span>
+                        <span class="text-sm bg-orange-100 text-orange-700 px-3 py-1 rounded-full ml-2">Modeling</span>
+                    </div>
+                    <button class="secondary-button w-full">View Gallery</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="glass rounded-2xl p-12 h-80 flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">👋</div>
+                        <p class="text-gray-600 text-lg">Let's Connect</p>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Get In Touch</h2>
+                    <p class="text-xl text-gray-600 mb-8">Interested in collaborating or want to discuss automation, 3D rendering, or creative coding?</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-500 text-xl">💼</span>
+                            <div>
+                                <h3 class="font-bold text-gray-900">Work Together</h3>
+                                <p class="text-gray-600 text-sm">Open for freelance projects, consulting, and collaborations</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-500 text-xl">📧</span>
+                            <div>
+                                <h3 class="font-bold text-gray-900">Email</h3>
+                                <p class="text-gray-600 text-sm">nelson@vibecoding.dev</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-500 text-xl">🔗</span>
+                            <div>
+                                <h3 class="font-bold text-gray-900">Social</h3>
+                                <p class="text-gray-600 text-sm">GitHub • Twitter • LinkedIn • Discord</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-white mb-6">Ready for Something Creative?</h2>
+            <p class="text-xl text-blue-100 mb-8">Let's build something amazing together. Automation, 3D art, or code with vibes.</p>
+            <div class="flex gap-4 justify-center">
+                <button class="bg-white text-blue-600 font-bold py-3 px-8 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors">
+                    Start a Project
+                </button>
+                <button class="border-2 border-white text-white font-bold py-3 px-8 rounded-lg cursor-pointer hover:bg-white hover:text-blue-600 transition-colors">
+                    Chat About Ideas
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-white font-bold mb-4">Nelson</h3>
+                    <p class="text-sm">Creative technologist building beautiful automation and 3D experiences.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-4">Skills</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white cursor-pointer">Vibe Coding</a></li>
+                        <li><a href="#" class="hover:text-white cursor-pointer">N8N Automation</a></li>
+                        <li><a href="#" class="hover:text-white cursor-pointer">3D Rendering</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-4">Projects</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white cursor-pointer">ComfyUI Workflows</a></li>
+                        <li><a href="#" class="hover:text-white cursor-pointer">Automation Suites</a></li>
+                        <li><a href="#" class="hover:text-white cursor-pointer">3D Portfolio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-4">Connect</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white cursor-pointer">Twitter</a></li>
+                        <li><a href="#" class="hover:text-white cursor-pointer">GitHub</a></li>
+                        <li><a href="#" class="hover:text-white cursor-pointer">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+                <p>&copy; 2026 Nelson - Creative Technologist. Built with Vibe & Code.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
